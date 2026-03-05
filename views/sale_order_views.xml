@@ -4,14 +4,17 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//sheet/notebook/page[@name='order_lines']" position="after">
-                <group string="CSV Import">
-                    <field name="csv_file" filename="csv_filename"/>
-                    <button name="action_import_csv_products"
-                            type="object"
-                            string="Import Products from CSV"
-                            class="btn-primary"/>
-                </group>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page name="batch_csv_import" string="Batch Import">
+                    <group string="CSV Import">
+                        <field name="csv_filename" invisible="1"/>
+                        <field name="csv_file" filename="csv_filename"/>
+                        <button name="action_import_csv_products"
+                                type="object"
+                                string="Import Products from CSV"
+                                class="btn-primary"/>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>
